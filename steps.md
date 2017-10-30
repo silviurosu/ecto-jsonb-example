@@ -1,0 +1,6 @@
+ -  mix ecto.create
+-  mix ecto.gen.migration create_users
+- scriu migrarea de users
+- mix ecto.migrate
+- crez modelul de user
+- mix run priv/repo/seeds.exs
