@@ -16,6 +16,20 @@ query = from u in User,
 roles_result = Repo.all(query)
 IO.inspect roles_result
 
+IO.puts "Select users by loyalty"
+query = from u in User,
+        where: fragment("(settings_index)::jsonb @> ?::jsonb", ^%{loyalties: 101})
+
+result = Repo.all(query)
+IO.inspect result
+
+IO.puts "Select users - all with key personal_info"
+query = from u in User,
+        where: fragment("(settings_index)::jsonb \\? ?", "personal_info")
+
+result = Repo.all(query)
+IO.inspect result
+
 IO.puts "Roles search benchmark with index vs without index"
 index_role_query = fn ->
   query = from u in User,

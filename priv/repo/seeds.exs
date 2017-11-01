@@ -7,11 +7,20 @@ providers = ["facebook", "google", "twitter", "github", "foursquare", "dropbox",
 for i <- 1..1_000_000 do
   selected_providers = Enum.take_random(providers, 2)
   selected_roles = Enum.take_random(roles, 2)
-  settings = %{
-    roles: (if rem(i, 250_000) == 0, do: ["admin", Enum.random(selected_roles)], else: selected_roles),
-    loyalties: :rand.uniform(1_000),
-    providers: selected_providers
-  }
+  settings = if rem(i, 250_000) == 0 do
+              %{
+                roles: ["admin", Enum.random(selected_roles)]
+                loyalties: :rand.uniform(1_000),
+                providers: selected_providers,
+                personal_info: "Gigi"
+              }
+             else
+               %{
+                 roles: selected_roles,
+                 loyalties: :rand.uniform(1_000),
+                 providers: selected_providers
+               }
+             end
 
   acls = for _ <- 1..4, do: :rand.uniform(100)
   acls = if rem(i, 250_000) == 0, do: acls ++ [101], else: acls
