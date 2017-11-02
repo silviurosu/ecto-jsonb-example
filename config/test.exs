@@ -11,5 +11,6 @@ config :ecto_jsonb_example, EctoJsonbExample.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox,
   ownership_timeout: 300_000
-  # loggers: [{Ecto.LogEntry, :log, [:info]}],
-  # log_level: :debug
+
+# loggers: [{Ecto.LogEntry, :log, [:info]}],
+# log_level: :debug

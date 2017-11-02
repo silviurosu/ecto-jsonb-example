@@ -7,7 +7,7 @@ defmodule EctoJsonbExample.Application do
     import Supervisor.Spec, warn: false
 
     children = [
-       supervisor(EctoJsonbExample.Repo, [])
+      supervisor(EctoJsonbExample.Repo, [])
     ]
 
     opts = [strategy: :one_for_one, name: EctoJsonbExample.Supervisor]
