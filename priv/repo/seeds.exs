@@ -9,7 +9,7 @@ for i <- 1..1_000_000 do
   selected_roles = Enum.take_random(roles, 2)
   settings = if rem(i, 250_000) == 0 do
               %{
-                roles: ["admin", Enum.random(selected_roles)]
+                roles: ["admin", Enum.random(selected_roles)],
                 loyalties: :rand.uniform(1_000),
                 providers: selected_providers,
                 personal_info: "Gigi"
